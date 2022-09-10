@@ -8,12 +8,12 @@ class DataList {
       imgUrl: 'assets/images/orders_img.svg',
       title: 'Orders',
       ordersActive: '3',
-      ordersPending: '03',
-      smallImg1: 'assets/images/orders_img.svg',
-      smallImg2: 'assets/images/orders_img.svg',
-      smallImg3: 'assets/images/orders_img.svg',
-      smallImg4: 'assets/images/orders_img.svg',
-      smallImg5: 'assets/images/orders_img.svg',
+      ordersPending: '02',
+      smallImg1: 'assets/images/profile1.jpg',
+      smallImg2: 'assets/images/profile2.jpg',
+      smallImg3: 'assets/images/profile3.jpg',
+      smallImg4: 'assets/images/profile4.jpg',
+      smallImg5: 'assets/images/profile5.jpg',
     ),
   ];
 
@@ -24,9 +24,9 @@ class DataList {
       deliveries: '03',
       activeSubs: '10',
       pendingDeliveries: '119',
-      smallImg1: 'assets/images/sub_img.svg',
-      smallImg2: 'assets/images/sub_img.svg',
-      smallImg3: 'assets/images/sub_img.svg',
+      smallImg1: 'assets/images/profile1.jpg',
+      smallImg2: 'assets/images/profile2.jpg',
+      smallImg3: 'assets/images/profile3.jpg',
     ),
   ];
 
@@ -37,9 +37,9 @@ class DataList {
       newCustomers: '15',
       percentage: '1.8%',
       activeCustomers: '10',
-      smallImg1: 'assets/images/customers_img.svg',
-      smallImg2: 'assets/images/customers_img.svg',
-      smallImg3: 'assets/images/customers_img.svg',
+      smallImg1: 'assets/images/profile1.jpg',
+      smallImg2: 'assets/images/profile2.jpg',
+      smallImg3: 'assets/images/profile3.jpg',
     ),
   ];
 }

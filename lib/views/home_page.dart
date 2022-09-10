@@ -3,9 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mypcot/constants/colors.dart';
 import 'package:mypcot/constants/textstyles.dart';
 import 'package:mypcot/data/data_list.dart';
-import 'package:mypcot/models/orders.dart';
-import 'package:mypcot/models/subscriptions.dart';
-import 'package:mypcot/models/customers.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,62 +20,21 @@ class _HomePageState extends State<HomePage> {
     DataList dataList = DataList();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBody: true,
-      floatingActionButton: Container(
-        height: 70,
-        width: 70,
+      floatingActionButton: SizedBox(
+        height: mediaQuery.size.width * 0.16,
+        width: mediaQuery.size.width * 0.16,
         child: FloatingActionButton(
-          backgroundColor: Color(0xFF2C3D63),
+          backgroundColor: const Color(0xFF2C3D63),
           child: Icon(
             Icons.add,
+            size: mediaQuery.size.width * 0.07,
           ),
           onPressed: () {},
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // appBar: AppBar(),
-      // appBar: AppBar(
-      //   leading: Container(
-      //     child: SvgPicture.asset(
-      //       'assets/images/menu_icon_1.svg',
-      //     ),
-      //   ),
-      //   actions: [
-      //     Container(
-      //       child: SvgPicture.asset(
-      //         'assets/images/fav_icon.svg',
-      //       ),
-      //     ),
-      //     Container(
-      //       child: SvgPicture.asset(
-      //         'assets/images/bell_icon_1.svg',
-      //       ),
-      //     ),
-      //     Container(
-      //       child: SvgPicture.asset(
-      //         'assets/images/profile.svg',
-      //         height: 100,
-      //         width: 100,
-      //       ),
-      //     ),
-
-      //     // Icon(
-      //     //   Icons.favorite,
-      //     //   color: Colors.black,
-      //     // ),
-      //     // Icon(
-      //     //   Icons.favorite,
-      //     //   color: Colors.black,
-      //     // ),
-      //     // Icon(
-      //     //   Icons.favorite,
-      //     //   color: Colors.black,
-      //     // ),
-      //   ],
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   title: Text('MyPcot'),
-      // ),
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
@@ -141,25 +97,43 @@ class _HomePageState extends State<HomePage> {
                               'assets/images/fav_icon_3.svg',
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
+                          Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            height: 35,
-                            width: 35,
-                            child: SvgPicture.asset(
-                              'assets/images/bell_icon_1.svg',
-                            ),
+                                height: 35,
+                                width: 35,
+                                child: SvgPicture.asset(
+                                  'assets/images/bell_icon_1.svg',
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.only(left: 18, top: 6),
+                                decoration: BoxDecoration(
+                                    color: kColorOrangeDark,
+                                    shape: BoxShape.circle),
+                                height: 14,
+                                width: 14,
+                                child: Text(
+                                  '2',
+                                  style: kTextMedium.copyWith(
+                                      color: Colors.white, fontSize: 12),
+                                ),
+                              ),
+                            ],
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -254,7 +228,7 @@ class _HomePageState extends State<HomePage> {
               //List Cards
 
               Container(
-                height: 240,
+                height: 270,
                 margin: EdgeInsets.only(top: 20, bottom: 20),
 
                 // width: mediaQuery.size.width,
@@ -262,19 +236,18 @@ class _HomePageState extends State<HomePage> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    //Orders
-
+                    //ORDERS
                     Stack(
                       children: [
                         Container(
-                          height: 240,
-                          color: Colors.red.withOpacity(0.1),
+                          height: 260,
+                          // color: Colors.red.withOpacity(0.1),
                           width: mediaQuery.size.width,
                         ),
                         Container(
-                          height: 240,
+                          height: 260,
                           margin: EdgeInsets.only(left: 20, top: 10),
-                          padding: EdgeInsets.only(left: 20, top: 20),
+                          padding: EdgeInsets.only(left: 20, top: 30),
                           width: mediaQuery.size.width * 0.91,
                           decoration: BoxDecoration(
                             color: kColorBlue,
@@ -284,8 +257,8 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 130,
-                                height: 130,
+                                width: 140,
+                                height: 140,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.white,
@@ -297,12 +270,12 @@ class _HomePageState extends State<HomePage> {
                               ),
 
                               SizedBox(
-                                height: 25,
+                                height: 30,
                               ),
 
                               //Text
                               Container(
-                                // margin: EdgeInsets.only(left: 10),
+                                margin: EdgeInsets.only(left: 13),
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 32, vertical: 8),
                                 decoration: BoxDecoration(
@@ -330,190 +303,1127 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 15),
-                          margin: EdgeInsets.only(left: 200),
-                          height: 90,
-                          width: 150,
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                                color: kColorOrangeDark,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(left: 200),
+                              height: 90,
+                              width: 150,
+                              child: Column(
                                 children: [
-                                  Text(
-                                    'You have ',
-                                    style: kTextRegular.copyWith(
-                                        fontSize: 16, color: Colors.white),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'You have ',
+                                        style: kTextRegular.copyWith(
+                                            fontSize: 16, color: Colors.white),
+                                      ),
+                                      Text(
+                                        '${dataList.ordersList[0].ordersActive}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 25, color: Colors.white),
+                                      ),
+                                      Text(
+                                        ' active',
+                                        style: kTextRegular.copyWith(
+                                            fontSize: 16, color: Colors.white),
+                                      ),
+                                    ],
                                   ),
                                   Text(
-                                    '${dataList.ordersList[0].ordersActive}',
-                                    style: kTextBold.copyWith(
-                                        fontSize: 25, color: Colors.white),
-                                  ),
-                                  Text(
-                                    ' active',
+                                    'orders from',
                                     style: kTextRegular.copyWith(
                                         fontSize: 16, color: Colors.white),
                                   ),
                                 ],
                               ),
-                              Text(
-                                'orders from',
-                                style: kTextRegular.copyWith(
-                                    fontSize: 16, color: Colors.white),
+                            ),
+
+                            //3 Pics
+                            Stack(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 15),
+                                  margin: EdgeInsets.only(
+                                    left: 170,
+                                    top: 65,
+                                  ),
+                                  height: 45,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1.5,
+                                        color: kColorPink,
+                                      ),
+                                      color: Colors.blue.withOpacity(0.5),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          dataList.ordersList[0].smallImg1,
+                                        ),
+                                      )),
+                                  // child: Image.asset(
+                                  //   dataList.ordersList[0].smallImg1,
+                                  //   fit: BoxFit.contain,
+                                  // ),
+                                ),
+                              ],
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 200,
+                                top: 65,
                               ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: kColorOrangeDark,
-                          ),
-                        )
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: kColorPink,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg2,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 230,
+                                top: 65,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: kColorPink,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg3,
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              margin: EdgeInsets.only(left: 220, top: 130),
+                              height: 90,
+                              width: 135,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '${dataList.ordersList[0].ordersPending}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 26, color: kTextColor),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 3),
+                                        child: Text(
+                                          ' Pending',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 14,
+                                              color:
+                                                  kTextColor.withOpacity(0.8)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Orders from',
+                                    style: kTextRegular.copyWith(
+                                        fontSize: 18, color: kTextColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 200,
+                                top: 195,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: kColorPink,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg4,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 230,
+                                top: 195,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: kColorPink,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg5,
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
 
-                    //SUBS
-                    Container(
-                      height: 240,
-                      margin: EdgeInsets.only(left: 20, right: 20),
-                      padding: EdgeInsets.only(left: 20, top: 20),
-                      width: mediaQuery.size.width * 0.91,
-                      decoration: BoxDecoration(
-                        color: kColorYellow,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 130,
-                            height: 130,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: SvgPicture.asset(
-                              dataList.subsList[0].imgUrl,
-                              fit: BoxFit.contain,
-                            ),
+                    //SUBSCRIPTIONS
+                    Stack(
+                      children: [
+                        Container(
+                          height: 260,
+                          // color: Colors.red.withOpacity(0.1),
+                          // width: mediaQuery.size.width,
+                        ),
+                        Container(
+                          height: 260,
+                          // margin: EdgeInsets.only(top: 10),
+                          // padding: EdgeInsets.only(left: 20, top: 20),
+                          margin: EdgeInsets.only(
+                            top: 10,
+                            right: 20,
                           ),
-
-                          SizedBox(
-                            height: 25,
+                          padding:
+                              EdgeInsets.only(right: 20, top: 30, left: 20),
+                          width: mediaQuery.size.width * 0.91,
+                          decoration: BoxDecoration(
+                            color: kColorYellow,
+                            borderRadius: BorderRadius.circular(25),
                           ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 140,
+                                height: 140,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: SvgPicture.asset(
+                                  dataList.subsList[0].imgUrl,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
 
-                          //Text
-                          Container(
-                            // margin: EdgeInsets.only(left: 10),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: kColorOrangeDark,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
+                              SizedBox(
+                                height: 25,
+                              ),
+
+                              //Text
+                              Container(
+                                // margin: EdgeInsets.only(left: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 32, vertical: 8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: kColorBlueDark,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 2,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                // height: 30,
+                                // width: 90,
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  dataList.subsList[0].title,
+                                  style: kTextRegular.copyWith(
+                                      fontSize: 17, color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                                color: kColorBlueDark,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(left: 180),
+                              height: 90,
+                              width: 150,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      // Text(
+                                      //   'You have ',
+                                      //   style: kTextRegular.copyWith(
+                                      //       fontSize: 16, color: Colors.white),
+                                      // ),
+                                      Text(
+                                        '${dataList.subsList[0].deliveries}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 25, color: Colors.white),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          ' deliveries',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 16,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  // Text(
+                                  //   'orders from',
+                                  //   style: kTextRegular.copyWith(
+                                  //       fontSize: 16, color: Colors.white),
+                                  // ),
+                                ],
+                              ),
+                            ),
+
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                              ),
+                              padding:
+                                  EdgeInsets.only(left: 10, right: 10, top: 15),
+                              margin: EdgeInsets.only(left: 210, top: 100),
+                              height: 70,
+                              width: 120,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${dataList.subsList[0].activeSubs}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 26, color: kTextColor),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          ' Active',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 13,
+                                              color:
+                                                  kTextColor.withOpacity(0.8)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text(
+                                    'Subscriptions',
+                                    style: kTextRegular.copyWith(
+                                        fontSize: 17, color: kTextColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                              ),
+                              padding:
+                                  EdgeInsets.only(left: 10, right: 10, top: 10),
+                              margin: EdgeInsets.only(left: 225, top: 180),
+                              height: 70,
+                              width: 125,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${dataList.subsList[0].pendingDeliveries}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 26, color: kTextColor),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          ' Pending',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 13,
+                                              color:
+                                                  kTextColor.withOpacity(0.8)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text(
+                                    'Deliveries',
+                                    style: kTextRegular.copyWith(
+                                        fontSize: 17, color: kTextColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            //3 Pics
+                            Stack(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 15),
+                                  margin: EdgeInsets.only(
+                                    left: 150,
+                                    top: 65,
+                                  ),
+                                  height: 45,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1.5,
+                                        color: Colors.deepPurple,
+                                      ),
+                                      color: Colors.blue.withOpacity(0.5),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          dataList.ordersList[0].smallImg1,
+                                        ),
+                                      )),
+                                  // child: Image.asset(
+                                  //   dataList.ordersList[0].smallImg1,
+                                  //   fit: BoxFit.contain,
+                                  // ),
                                 ),
                               ],
                             ),
-                            // height: 30,
-                            // width: 90,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              dataList.subsList[0].title,
-                              style: kTextRegular.copyWith(
-                                  fontSize: 17, color: Colors.white),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 180,
+                                top: 65,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.deepPurple,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg2,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
                             ),
-                          ),
-                        ],
-                      ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 210,
+                                top: 65,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.deepPurple,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg3,
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            // Container(
+                            //   padding: EdgeInsets.symmetric(
+                            //       horizontal: 10, vertical: 15),
+                            //   margin: EdgeInsets.only(
+                            //     left: 200,
+                            //     top: 185,
+                            //   ),
+                            //   height: 45,
+                            //   width: 150,
+                            //   decoration: BoxDecoration(
+                            //       border: Border.all(
+                            //         width: 1.5,
+                            //         color: kColorPink,
+                            //       ),
+                            //       color: Colors.blue.withOpacity(0.5),
+                            //       shape: BoxShape.circle,
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           dataList.ordersList[0].smallImg4,
+                            //         ),
+                            //       )),
+                            //   // child: Image.asset(
+                            //   //   dataList.ordersList[0].smallImg1,
+                            //   //   fit: BoxFit.contain,
+                            //   // ),
+                            // ),
+                            // Container(
+                            //   padding: EdgeInsets.symmetric(
+                            //       horizontal: 10, vertical: 15),
+                            //   margin: EdgeInsets.only(
+                            //     left: 230,
+                            //     top: 185,
+                            //   ),
+                            //   height: 45,
+                            //   width: 150,
+                            //   decoration: BoxDecoration(
+                            //       border: Border.all(
+                            //         width: 1.5,
+                            //         color: kColorPink,
+                            //       ),
+                            //       color: Colors.blue.withOpacity(0.5),
+                            //       shape: BoxShape.circle,
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           dataList.ordersList[0].smallImg5,
+                            //         ),
+                            //       )),
+                            // ),
+                          ],
+                        ),
+                      ],
                     ),
 
-                    //Customers
-                    Container(
-                      height: 240,
-                      margin: EdgeInsets.only(right: 20),
-                      padding: EdgeInsets.only(left: 20, top: 20),
-                      width: mediaQuery.size.width * 0.91,
-                      decoration: BoxDecoration(
-                        color: kColorGreen,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 130,
-                            height: 130,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: SvgPicture.asset(
-                              dataList.ordersList[0].imgUrl,
-                              fit: BoxFit.contain,
-                            ),
+                    //CUSTOMERS
+                    Stack(
+                      children: [
+                        Container(
+                          height: 260,
+                          // color: Colors.red.withOpacity(0.1),
+                          // width: mediaQuery.size.width,
+                        ),
+                        Container(
+                          height: 260,
+                          // margin: EdgeInsets.only(top: 10),
+                          // padding: EdgeInsets.only(left: 20, top: 20),
+                          margin: EdgeInsets.only(
+                            top: 10,
+                            // right: 20,
                           ),
-
-                          SizedBox(
-                            height: 25,
+                          padding:
+                              EdgeInsets.only(right: 20, top: 35, left: 20),
+                          width: mediaQuery.size.width * 0.91,
+                          decoration: BoxDecoration(
+                            color: kColorGreen,
+                            borderRadius: BorderRadius.circular(25),
                           ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 140,
+                                height: 140,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                                child: SvgPicture.asset(
+                                  dataList.customersList[0].imgUrl,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
 
-                          //Text
-                          Container(
-                            margin: EdgeInsets.only(left: 10),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: kColorOrangeDark,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
+                              SizedBox(
+                                height: 25,
+                              ),
+
+                              //Text
+                              Container(
+                                // margin: EdgeInsets.only(left: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: kColorPink,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 2,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                // height: 30,
+                                // width: 90,
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  dataList.customersList[0].title,
+                                  style: kTextRegular.copyWith(
+                                      fontSize: 17, color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                                color: kColorPink,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(left: 180),
+                              height: 90,
+                              width: 150,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      // Text(
+                                      //   'You have ',
+                                      //   style: kTextRegular.copyWith(
+                                      //       fontSize: 16, color: Colors.white),
+                                      // ),
+                                      Text(
+                                        '${dataList.customersList[0].newCustomers}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 25, color: Colors.white),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          ' New customers',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 16,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  // Text(
+                                  //   'orders from',
+                                  //   style: kTextRegular.copyWith(
+                                  //       fontSize: 16, color: Colors.white),
+                                  // ),
+                                ],
+                              ),
+                            ),
+
+                            Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    alignment: Alignment.bottomCenter,
+                                    fit: BoxFit.contain,
+                                    image: AssetImage(
+                                      'assets/images/graph1.png',
+                                    )),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                              ),
+                              padding: EdgeInsets.only(left: 15, top: 15),
+                              margin: EdgeInsets.only(left: 230, top: 100),
+                              height: 80,
+                              width: 130,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${dataList.customersList[0].percentage}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 30, color: kTextColor),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Container(
+                                          height: 25,
+                                          width: 30,
+                                          padding: EdgeInsets.only(bottom: 3),
+                                          child: Image.asset(
+                                            'assets/images/up_arrow.png',
+                                            color: kColorGreen,
+                                          )),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  // Text(
+                                  //   'Subscriptions',
+                                  //   style: kTextRegular.copyWith(
+                                  //       fontSize: 17, color: kTextColor),
+                                  // ),
+                                ],
+                              ),
+                            ),
+
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 3,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                              ),
+                              padding:
+                                  EdgeInsets.only(left: 10, right: 10, top: 10),
+                              margin: EdgeInsets.only(left: 195, top: 190),
+                              height: 70,
+                              width: 105,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${dataList.customersList[0].activeCustomers}',
+                                        style: kTextBold.copyWith(
+                                            fontSize: 26, color: kTextColor),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          ' Active',
+                                          style: kTextRegular.copyWith(
+                                              fontSize: 13,
+                                              color:
+                                                  kTextColor.withOpacity(0.8)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text(
+                                    'Customers',
+                                    style: kTextRegular.copyWith(
+                                        fontSize: 17, color: kTextColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            //3 Small Pics
+
+                            Container(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20.0, left: 16),
+                                child: Icon(
+                                  Icons.circle,
+                                  size: 10,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              // padding: EdgeInsets.symmetric(
+                              //     horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 220,
+                                top: 210,
+                              ),
+                              height: 30,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.lightBlue,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg1,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
+                            ),
+                            Container(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20.0, left: 16),
+                                child: Icon(
+                                  Icons.circle,
+                                  size: 10,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              // padding: EdgeInsets.symmetric(
+                              //     horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 245,
+                                top: 210,
+                              ),
+                              height: 30,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.lightBlue,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg2,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
+                            ),
+                            Container(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20.0, left: 16),
+                                child: Icon(
+                                  Icons.circle,
+                                  size: 10,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              // padding: EdgeInsets.only(left: 10, top: 15),
+                              margin: EdgeInsets.only(
+                                left: 290,
+                                top: 210,
+                              ),
+                              height: 30,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.lightBlue,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg3,
+                                    ),
+                                  )),
+                            ),
+
+                            //3 Pics
+                            Stack(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 15),
+                                  margin: EdgeInsets.only(
+                                    left: 150,
+                                    top: 65,
+                                  ),
+                                  height: 45,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1.5,
+                                        color: Colors.lightBlue,
+                                      ),
+                                      color: Colors.blue.withOpacity(0.5),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          dataList.ordersList[0].smallImg1,
+                                        ),
+                                      )),
+                                  // child: Image.asset(
+                                  //   dataList.ordersList[0].smallImg1,
+                                  //   fit: BoxFit.contain,
+                                  // ),
                                 ),
                               ],
                             ),
-                            // height: 30,
-                            // width: 90,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              dataList.ordersList[0].title,
-                              style: kTextRegular.copyWith(
-                                  fontSize: 17, color: Colors.white),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 180,
+                                top: 65,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.lightBlue,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg2,
+                                    ),
+                                  )),
+                              // child: Image.asset(
+                              //   dataList.ordersList[0].smallImg1,
+                              //   fit: BoxFit.contain,
+                              // ),
                             ),
-                          ),
-                        ],
-                      ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 210,
+                                top: 65,
+                              ),
+                              height: 45,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color: Colors.lightBlue,
+                                  ),
+                                  color: Colors.blue.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      dataList.ordersList[0].smallImg3,
+                                    ),
+                                  )),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              // padding: EdgeInsets.symmetric(
+                              //     horizontal: 10, vertical: 15),
+                              margin: EdgeInsets.only(
+                                left: 257,
+                                top: 76,
+                              ),
+                              child: Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                              // child: Icon(Icons.add),
+                              height: 20,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                // border: Border.all(
+                                //   width: 1.5,
+                                //   // color: Colors.deepPurple,
+                                // ),
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                // image: DecorationImage(
+                                //   image: AssetImage(
+                                //     dataList.ordersList[0].smallImg3,
+                                //   ),
+                                // ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Stack(
+                        //   children: [
+                        //     // Container(
+                        //     //   padding: EdgeInsets.symmetric(
+                        //     //       horizontal: 10, vertical: 15),
+                        //     //   margin: EdgeInsets.only(
+                        //     //     left: 200,
+                        //     //     top: 185,
+                        //     //   ),
+                        //     //   height: 45,
+                        //     //   width: 150,
+                        //     //   decoration: BoxDecoration(
+                        //     //       border: Border.all(
+                        //     //         width: 1.5,
+                        //     //         color: kColorPink,
+                        //     //       ),
+                        //     //       color: Colors.blue.withOpacity(0.5),
+                        //     //       shape: BoxShape.circle,
+                        //     //       image: DecorationImage(
+                        //     //         image: AssetImage(
+                        //     //           dataList.ordersList[0].smallImg4,
+                        //     //         ),
+                        //     //       )),
+                        //     //   // child: Image.asset(
+                        //     //   //   dataList.ordersList[0].smallImg1,
+                        //     //   //   fit: BoxFit.contain,
+                        //     //   // ),
+                        //     // ),
+                        //     // Container(
+                        //     //   padding: EdgeInsets.symmetric(
+                        //     //       horizontal: 10, vertical: 15),
+                        //     //   margin: EdgeInsets.only(
+                        //     //     left: 230,
+                        //     //     top: 185,
+                        //     //   ),
+                        //     //   height: 45,
+                        //     //   width: 150,
+                        //     //   decoration: BoxDecoration(
+                        //     //       border: Border.all(
+                        //     //         width: 1.5,
+                        //     //         color: kColorPink,
+                        //     //       ),
+                        //     //       color: Colors.blue.withOpacity(0.5),
+                        //     //       shape: BoxShape.circle,
+                        //     //       image: DecorationImage(
+                        //     //         image: AssetImage(
+                        //     //           dataList.ordersList[0].smallImg5,
+                        //     //         ),
+                        //     //       )),
+                        //     // ),
+                        //   ],
+                        // ),
+                      ],
                     ),
-                    // Container(
-                    //   height: 240,
-                    //   margin: EdgeInsets.only(right: 20),
-                    //   width: mediaQuery.size.width * 0.91,
-                    //   decoration: BoxDecoration(
-                    //     color: kColorYellow,
-                    //     borderRadius: BorderRadius.circular(25),
-                    //   ),
-                    //   child: Text('hello'),
-                    // ),
-                    // Container(
-                    //   height: 240,
-                    //   margin: EdgeInsets.only(right: 20),
-                    //   width: mediaQuery.size.width * 0.91,
-                    //   decoration: BoxDecoration(
-                    //     color: kColorGreen,
-                    //     borderRadius: BorderRadius.circular(25),
-                    //   ),
-                    //   child: Text('hello'),
-                    // ),
                   ],
                 ),
               ),
@@ -885,10 +1795,22 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      Icon(
-                        Icons.circle,
-                        size: 90,
-                        color: kColorOrange,
+                      Container(
+                        // padding: EdgeInsets.all(15),
+                        padding: EdgeInsets.only(
+                            left: 25, right: 15, top: 15, bottom: 15),
+                        height: 90,
+                        width: 90,
+                        decoration: BoxDecoration(
+                          color: kColorOrange,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/note.png',
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
